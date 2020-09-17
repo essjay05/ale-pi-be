@@ -10,18 +10,11 @@ const PORT = 4000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Connect to DB
-mongoose.connect('mongodb://localhost:27017/beers', { useNewUrlParser: true });
-// Error handling
-try {
-    mongoose.connect('mongodb://localhost/Ale-PI', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }, () => 
-        console.log(`MongoDB is successfully connected`));
-} catch (error) {
-    console.log(`ALERT: MongoDB could not connect ${error}`);
-}
+// Routes
+app.get('/', (req, res) => {
+    res.send(`Hello World, this server is running on localhost: ${PORT}`)
+});
+
 
 // Port connection
 app.listen(PORT, function() {
